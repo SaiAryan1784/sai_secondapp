@@ -45,6 +45,9 @@ const RootLayout = () => {
 
         <Stack className="flex flex-1 items-center justify-center">
             <Stack.Screen name="index" options={{ headerShown: false}}/>
+            <Stack.Screen name="(auth)" options={{ headerShown: false}}/>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false}}/>
+            {/* <Stack.Screen name="/search" options={{ headerShown: false}}/> */}
         </Stack>
     )
 }

@@ -39,8 +39,6 @@ const App = () => {
                 </View>
                 <Text className="text-sm font-pregular text-gray-100 mt-7 text-center">Where creativity meets innvation: embark on a journey of exploration with Aora</Text>
 
-                <Link href="/home" className="text-white">go to profile</Link>
-
                 <CustomButtons
                 title="Continue with Email"
                 handlePress={()=> router.push('/sign_in')}
