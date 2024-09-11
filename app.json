@@ -18,7 +18,8 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/logo.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#ffffff",
+        "package" : "com.sai.app1"
       }
     },
     "web": {

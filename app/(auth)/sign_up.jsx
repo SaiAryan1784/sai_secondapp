@@ -1,11 +1,12 @@
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { Alert, Image, ScrollView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import {useState} from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import {images} from '../../constants'
 import FormField from '../../components/FormField'
 import CustomButton from '../../components/CustomButtons'
-import { Link } from 'expo-router'
+import { Link, router } from 'expo-router'
+import { createUser } from '../../lib/appwrite'
 
 const SignUp = () => {
 
@@ -17,8 +18,23 @@ const SignUp = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const submit = () => {
-    
+  const submit = async () => {
+    if(!form.username || !form.email || !form.password){
+      Alert.alert('Error', 'Please fill in all the fields')
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const result = await createUser( form.email, form.password, form.username)
+
+      router.replace('/home')
+    } catch (error) {
+      Alert.alert('Error', error.message) 
+    } finally {
+      setIsSubmitting(false)
+    }
+
   }
 
   return (
@@ -53,7 +69,7 @@ const SignUp = () => {
 
           <CustomButton title="Sign Up" 
           handlePress={submit} containerStyles=" mt-7"
-          isLoading={isSubmitting}
+          isLoading={isSubmitting} 
           />
 
           <View className='justify-center pt-5 flex-row gap-2'>
