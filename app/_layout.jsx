@@ -3,6 +3,8 @@ import React from 'react'
 import { Slot, SplashScreen, Stack } from 'expo-router'
 import {useFonts} from 'expo-font'
 import {useEffect} from 'react'
+import GlobalProvider from '../context/GlobalProvider'
+
 
 SplashScreen.preventAutoHideAsync();
 
@@ -43,12 +45,14 @@ const RootLayout = () => {
         //     <Text>Footer</Text>
         // </>
 
-        <Stack className="flex flex-1 items-center justify-center">
-            <Stack.Screen name="index" options={{ headerShown: false}}/>
-            <Stack.Screen name="(auth)" options={{ headerShown: false}}/>
-            <Stack.Screen name="(tabs)" options={{ headerShown: false}}/>
-            {/* <Stack.Screen name="/search" options={{ headerShown: false}}/> */}
-        </Stack>
+        <GlobalProvider>
+            <Stack className="flex flex-1 items-center justify-center">
+                <Stack.Screen name="index" options={{ headerShown: false}}/>
+                <Stack.Screen name="(auth)" options={{ headerShown: false}}/>
+                <Stack.Screen name="(tabs)" options={{ headerShown: false}}/>
+                {/* <Stack.Screen name="/search" options={{ headerShown: false}}/> */}
+            </Stack>
+        </GlobalProvider>
     )
 }
 
